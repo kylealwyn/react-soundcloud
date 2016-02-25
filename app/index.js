@@ -1,6 +1,8 @@
+require('./styles/global.scss')
+
 let React = require('react');
 let ReactDOM = require('react-dom');
-let Request = require('./utils/request');
+let request = require('./utils/request');
 
 
 class HelloWorld extends React.Component {
@@ -9,13 +11,18 @@ class HelloWorld extends React.Component {
 
     this.state = {
       message: 'Hello James'
-    }
+    };
 
     this.buttonClick = this.buttonClick.bind(this);
   }
 
   componentDidMount() {
-    console.log(new Request('get', this.props.src))
+    // console.log(new Request('get', this.props.src))
+    request('get', this.props.source).then((results) => {
+      console.log(results.body);
+    }).catch((err) => {
+      console.log(err);
+    });
     // this.fetchTracks();
   }
 
@@ -28,7 +35,7 @@ class HelloWorld extends React.Component {
       .get(this.props.source)
       .accept('application/json')
       .end((err, {body}) => {
-        console.log(body)
+        console.log(body);
       });
   }
 
@@ -48,4 +55,4 @@ class HelloWorld extends React.Component {
   }
 }
 
-ReactDOM.render(<HelloWorld source="https://api.soundcloud.com/tracks?client_id=dae9fa6b8d2421d9992b9d6ff0332134&limit=1" />, document.getElementById('app'));
+ReactDOM.render(<HelloWorld source="https://api.soundcloud.com/tracks?client_id=dae9fa6b8d2421d9992b9d6ff0332134&limit=4" />, document.getElementById('app'));

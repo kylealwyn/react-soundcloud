@@ -1,4 +1,6 @@
 // In webpack.config.js
+console.log('Building App');
+
 var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
@@ -6,7 +8,8 @@ var merge = require('webpack-merge');
 var TARGET = process.env.npm_lifecycle_event;
 var PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build')
+  build: path.join(__dirname, 'build'),
+  modules: path.join(__dirname, 'node_modules')
 };
 
 var HtmlWebpackPlugin = require('html-webpack-plugin')
@@ -22,43 +25,51 @@ var common = {
     path: PATHS.build,
     filename: 'bundle.js'
   },
+  devtool: 'source-map',
   module: {
+    preLoaders: [
+      {
+        test: /\.js?$/,
+        include: PATHS.app,
+        loaders: ['eslint']
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
-        include: __dirname + '/app',
-        loader: "babel",
+        include: PATHS.app,
+        loader: 'babel',
         query: {
           presets: ['react', 'es2015']
         }
+      },
+
+      // SCSS loader
+      // Use require('<stylesheet>') in your js
+      {
+        test: /\.scss$/,
+        include: PATHS.app,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+      },
+
+      {
+        test: /\.(png|jpg|gif|woff|woff2)$/,
+        loader: 'url-loader?limit=8192'
       }
-    ]
-  }
+    ],
+  },
+  plugins: [HTMLWebpackPluginConfig]
 }
 
 if(TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
     devServer: {
       contentBase: PATHS.build,
-
-      // Enable history API fallback so HTML5 History API based
-      // routing works. This is a good default that will come
-      // in handy in more complicated setups.
       historyApiFallback: true,
       hot: true,
       inline: true,
       progress: true,
-
-      // Display only errors to reduce the amount of output.
       stats: 'errors-only',
-
-      // Parse host and port from env so this is easy to customize.
-      //
-      // If you use Vagrant or Cloud9, set
-      // host: process.env.HOST || '0.0.0.0';
-      //
-      // 0.0.0.0 is available to all network devices unlike default
-      // localhost
       host: process.env.HOST,
       port: process.env.PORT
     },
@@ -69,5 +80,7 @@ if(TARGET === 'start' || !TARGET) {
 }
 
 if(TARGET === 'build') {
-  module.exports = merge(common, {});
+  module.exports = merge(common, {
+    plugins: [HTMLWebpackPluginConfig]
+  });
 }

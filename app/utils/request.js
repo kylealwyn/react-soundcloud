@@ -1,10 +1,18 @@
 let request = require('superagent');
+let q = require('q');
 
-class Request {
-  constructor(action, endpoint) {
-    console.log(action);
-    return request[action](endpoint)
-  }
-}
+module.exports = (action, endpoint) => {
+  let deferred = q.defer();
 
-module.exports = Request;
+  request[action](endpoint)
+    .accept('application/json')
+    .end((err, results) => {
+      if (!err) {
+        deferred.resolve(results);
+      } else {
+        deferred.reject(results);
+      }
+    });
+
+  return deferred.promise;
+};

@@ -52,9 +52,15 @@ var common = {
         loaders: ["style", "css?sourceMap", "sass?sourceMap"]
       },
 
+      // Images
       {
-        test: /\.(png|jpg|gif|eot|ttf|svg|woff|woff2)$/,
+        test: /\.(png|jpg|gif)$/,
         loader: 'url-loader?limit=8192'
+      },
+
+      {
+        test: /\.(woff|woff2|eot|ttf|svg)(\?\S*)?$/,
+        loader: 'file-loader?name=[name]-[hash].[ext]',
       }
     ],
   },
@@ -63,6 +69,9 @@ var common = {
 
 if(TARGET === 'start' || !TARGET) {
   module.exports = merge(common, {
+    output: {
+      publicPath: 'http://localhost:3000/'
+    },
     devServer: {
       contentBase: PATHS.build,
       historyApiFallback: true,

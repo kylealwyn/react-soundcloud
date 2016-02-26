@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.6",
+    "ionicons": "^2.0.1",
     "lodash": "^4.5.1",
     "q": "^1.4.1",
     "react": "^0.14.7",

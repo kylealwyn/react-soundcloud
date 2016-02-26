@@ -2,8 +2,12 @@
 @import "mixins";
 @import "animations";
 
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+/* NPM libraries */
 
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~ionicons/scss/ionicons";
+
+/* Global Styles */
 @import "global";
 
 /* Elements */

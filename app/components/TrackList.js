@@ -25,16 +25,15 @@ export default class TrackList extends React.Component {
 
   fetchTracks() {
     request('get', SoundcloudAPI.replace('{{limit}}', '10')).then((results) => {
-      console.log('Soundcloud tracks: ', results.body);
       this.setState({tracks: results.body});
-    }).catch((err) => {
-      console.log(err);
+    }).catch(() => {
+      // console.log(err);
     });
   }
 
   render() {
     if (!this.state.tracks) {
-        return (<h1>Loading</h1>)
+      return (<h1>Loading Tracks...</h1>)
     }
 
     return (

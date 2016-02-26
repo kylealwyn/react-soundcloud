@@ -3,7 +3,7 @@ import _ from 'lodash';
 import config from '../config/default';
 
 
-let artworkDefault = 'http://ingridwu.dmmdmcfatter.com/wp-content/uploads/2015/01/placeholder.png';
+const artworkDefault = 'http://ingridwu.dmmdmcfatter.com/wp-content/uploads/2015/01/placeholder.png';
 
 
 export default class TrackCell extends React.Component {
@@ -44,7 +44,6 @@ export default class TrackCell extends React.Component {
 
 
   render() {
-    console.log('Rendering Cell');
     let {user, title, description, artwork_url, permalink_url, downloadable, download_url, waveform_url} = this.props.track;
 
     return (

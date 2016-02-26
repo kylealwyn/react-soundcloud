@@ -4,7 +4,7 @@ import TrackList from './TrackList';
 // import Footer from './Footer';
 import '../assets/styles/index.scss'
 
-export class App extends React.Component {
+export default class App extends React.Component {
   render() {
     return (
       <div className="app">

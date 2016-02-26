@@ -6,7 +6,7 @@ import config from '../config/default';
 let artworkDefault = 'http://ingridwu.dmmdmcfatter.com/wp-content/uploads/2015/01/placeholder.png';
 
 
-export class TrackCell extends React.Component {
+export default class TrackCell extends React.Component {
   constructor(props) {
     super(props);
 
@@ -45,10 +45,10 @@ export class TrackCell extends React.Component {
 
   render() {
     console.log('Rendering Cell');
-    let {title, description, artwork_url, permalink_url, downloadable, download_url, user} = this.props.track;
+    let {user, title, description, artwork_url, permalink_url, downloadable, download_url, waveform_url} = this.props.track;
 
     return (
-      <div className='track'>
+      <div className='track' style={{backgroundImage: `url(${waveform_url})`}}>
         <div className='track-image' style={ {backgroundImage: `url(${artwork_url || artworkDefault})`} } />
 
         <div className='track-information'>

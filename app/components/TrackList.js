@@ -6,7 +6,7 @@ import _ from 'lodash';
 
 const SoundcloudAPI = `https://api.soundcloud.com/tracks?client_id=${config.soundcloud.key}&limit=${config.soundcloud.limit}`
 
-export class TrackList extends React.Component {
+export default class TrackList extends React.Component {
   constructor(props) {
     super(props);
     _.extend(this, {

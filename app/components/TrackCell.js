@@ -62,17 +62,17 @@ export default class TrackCell extends React.Component {
           <div className='track-actions'>
             {(() => {
               if (this.state.error) {
-                return (<i className='ion ion-alert-circled' />)
+                return (<i className='action-icon ion ion-alert-circled' />)
               } else if (!this.state.loaded) {
-                return (<i className='ion ion-load-d spin' />)
+                return (<i className='action-icon ion ion-load-d spin' />)
               } else if (this.state.playing) {
-                return (<i onClick={this.pause} className='ion ion-pause' />)
+                return (<i onClick={this.pause} className='action-icon ion ion-pause' />)
               } else {
-                return (<i onClick={this.play} className='ion ion-play' />)
+                return (<i onClick={this.play} className='action-icon ion ion-play' />)
               }
             })()}
 
-            {downloadable && <a className='ion ion-android-download' href={`${download_url}?client_id=${config.soundcloud.key}`} download></a>}
+            {downloadable && <a className='action-icon ion ion-android-download' href={`${download_url}?client_id=${config.soundcloud.key}`} download></a>}
           </div>
         </div>
       </div>

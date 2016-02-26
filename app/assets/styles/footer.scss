@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  margin-top: 2em;
+  @include gradient(45deg, $dark-gray, darken($dark-gray, 10%));
+
+}

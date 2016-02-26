@@ -1,0 +1,64 @@
+.track-list {
+  display: block;
+  max-width: 768px;
+  margin: 0 auto 1em;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  padding: 1em 2em;
+  margin: 0 0 1em;
+  background: $white;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.14);
+  transition: 250ms;
+
+  &:hover {
+     box-shadow: 0 7px 18px rgba(0,0,0,0.14), 0 6px 6px rgba(0,0,0,0.18);
+  }
+
+  .track-image {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    margin-right: 2em;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 0;
+  }
+
+  .track-information {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .track-title {
+    margin-bottom: 0;
+
+    a {
+      color: $primary-color;
+    }
+  }
+
+  .track-artist {
+    color: $medium-gray;
+    margin-bottom: 1em;
+  }
+
+  .track-audio {
+    display: none;
+  }
+  .track-actions {
+    .ion {
+      margin-right: 1em;
+      cursor: pointer;
+      color: $medium-gray;
+      font-size: 24px;
+      transition: 250ms;
+  
+      &:hover {
+        color: darken($medium-gray, 5%);
+      }
+    }
+  }
+}

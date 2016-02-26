@@ -53,7 +53,7 @@ var common = {
       },
 
       {
-        test: /\.(png|jpg|gif|woff|woff2)$/,
+        test: /\.(png|jpg|gif|eot|ttf|svg|woff|woff2)$/,
         loader: 'url-loader?limit=8192'
       }
     ],

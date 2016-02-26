@@ -38,15 +38,12 @@ export default class TrackList extends React.Component {
 
     return (
       <div>
-        <div className="track-list">
+        <div className="container">
           {this.state.tracks.map((track, idx) => {
             return (
               <TrackCell key={idx} track={track} />
             )
           })}
-          <div className="text-center">
-            <button className="btn btn-primary" onClick={this.buttonClick}>Load More</button>
-          </div>
         </div>
       </div>
     )

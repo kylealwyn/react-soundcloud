@@ -12,3 +12,8 @@ $background-color: $light-gray;
 $brand-primary: $primary-color;
 
 $ionicons-font-path: "../fonts/ionicons";
+
+$grid-gutter-width: 30px;
+$container-tablet:             (738px + $grid-gutter-width) !default;
+$container-desktop:            (738px + $grid-gutter-width) !default;
+$container-large-desktop:      (738px + $grid-gutter-width) !default;

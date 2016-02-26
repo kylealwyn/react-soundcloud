@@ -24,7 +24,7 @@ export default class TrackCell extends React.Component {
   componentDidMount() {
     this.audio = new Audio(`${this.props.track.stream_url}?client_id=${config.soundcloud.key}`);
     this.audio.addEventListener('error', () => this.setState({ error: true }) );
-    this.audio.addEventListener('canplaythrough', () => this.setState({ loaded: true }) );
+    this.audio.addEventListener('canplay', () => this.setState({ loaded: true }) );
   }
 
   componentWillUnmount() {

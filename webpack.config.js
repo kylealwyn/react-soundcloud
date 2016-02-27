@@ -1,6 +1,3 @@
-// In webpack.config.js
-console.log('Building App');
-
 var path = require('path');
 var webpack = require('webpack');
 var merge = require('webpack-merge');
@@ -49,18 +46,13 @@ var common = {
       {
         test: /\.scss$/,
         include: PATHS.app,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ["style", "css", "sass"]
       },
 
       // Images
       {
-        test: /\.(png|jpg|gif)$/,
-        loader: 'url-loader?limit=8192'
-      },
-
-      {
-        test: /\.(woff|woff2|eot|ttf|svg)(\?\S*)?$/,
-        loader: 'file-loader?name=[name]-[hash].[ext]',
+        test: /\.(png|jpg|gif|woff|woff2|eot|ttf|svg)(\?\S*)?$/,
+        loader: 'url-loader?limit=8192&name=[name]-[hash].[ext]'
       }
     ],
   },
@@ -90,6 +82,9 @@ if(TARGET === 'start' || !TARGET) {
 
 if(TARGET === 'build') {
   module.exports = merge(common, {
+    output: {
+      publicPath: ''
+    },
     plugins: [HTMLWebpackPluginConfig]
   });
 }

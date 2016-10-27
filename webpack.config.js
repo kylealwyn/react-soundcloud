@@ -5,7 +5,7 @@ var merge = require('webpack-merge');
 var TARGET = process.env.npm_lifecycle_event;
 var PATHS = {
   app: path.join(__dirname, 'app'),
-  build: path.join(__dirname, 'build'),
+  build: path.join(__dirname, 'docs'),
   modules: path.join(__dirname, 'node_modules')
 };
 

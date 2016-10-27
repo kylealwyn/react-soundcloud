@@ -6,8 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --port 3000",
-    "build": "NODE_ENV=production webpack -p",
-    "deploy": "npm run build && git subtree push --prefix build origin gh-pages"
+    "build": "NODE_ENV=production webpack -p"
   },
   "author": "",
   "license": "ISC",
